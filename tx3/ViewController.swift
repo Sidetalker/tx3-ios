@@ -346,6 +346,8 @@ class ViewController: UIViewController {
          *  Finally, we check for a draw. We loop through the grid variable, and if we
          *  come upon an empty cell (i.e. ""), then we set the flag and we're done. If
          *  we don't, then the flag remains set to "false" and we send back 3, or "draw"
+         *
+         *  Source: https://codereview.stackexchange.com/a/24890
          */
         
         
