@@ -18,10 +18,10 @@ class ViewController: UIViewController {
     var turn: Bool = false
     var gameOver: Bool = false
     var grid: Array<Array<String>> =
-    [
-        [ "", "", ""],
-        [ "", "", ""],
-        [ "", "", ""]
+        [
+            [ "", "", ""],
+            [ "", "", ""],
+            [ "", "", ""]
     ]
 
     // Top boxes - left/middle/right
@@ -51,12 +51,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        // Add all boxes to the view
-        // and their actions and tags
-        // Top to bottom, left to right
-        // The first digit in the tag
-        // gives the position in the rows,
-        // the second is the position in columns
+        /*
+         *  Add all boxes to the view
+         *  and their actions and tags
+         *  Top to bottom, left to right
+         *  The first digit in the tag
+         *  gives the position in the rows,
+         *  the second is the position in columns
+         */
         view.addSubview(box_tl)
         box_tl.tag = 11
         box_tl.addTarget(self, action: #selector(ViewController.game), for: .touchUpInside)
@@ -95,108 +97,92 @@ class ViewController: UIViewController {
         
         // Add reset button
         view.addSubview(button_reset)
-        button_reset.setTitle("Reset", for: .normal)
-        button_reset.setTitleColor(.blue, for: .normal)
-        button_reset.isHidden = true
         button_reset.addTarget(self, action: #selector(ViewController.resetGame), for: .touchUpInside)
         
         // Add turn label to view and center text
-        label_turn.textAlignment = .center
-        label_turn.text = "Player Turn: X"
         view.addSubview(label_turn)
         
         // Add winner/error label to view and center text
-        label_info.textAlignment = .center
         view.addSubview(label_info)
     }
     
-    override func viewWillLayoutSubviews() {
-        /*
-         *  box_cm will act as our center anchor
-         *  everything else will be anchored relatively
-         *  around it.
-         *  Both box_tm and _bm will anchor to _cm
-         *  and the left and right boxes will anchor to
-         *  to their respective middle boxes
-         *
-         *  Also, anchor turn_label to the top edge
-         *  of the screen and info_label to bottom
-         *
-         *  Make sure to set the Reset button as well
-         *
-         *  This will occur every time the screen is resized
-         *  (e.g. on device rotation)
-         */
-        
-        /*
-         *  Anchor turn_label to top edge
-         *  This will anchor the label to the top,
-         *  add 15px of padding to the sides, 45px
-         *  of padding from the top, and make it 21px
-         *  tall
-         */
-        label_turn.anchorAndFillEdge(.top, xPad: 15, yPad: 45, otherSize: 21)
-        label_info.anchorAndFillEdge(.bottom, xPad: 15, yPad: 50, otherSize: 21)
-        
-        button_reset.anchorInCorner(.bottomRight, xPad: 10, yPad: 20, width: 80, height: 21)
-        
-        // Anchor _cm to the center of the screen
-        box_cm.anchorInCenter(width: 55, height: 55)
-        
-        // Anchor the center left and right boxes to the center
-        box_cl.align(.toTheLeftCentered, relativeTo: box_cm, padding: 0, width: 55, height: 55)
-        box_cr.align(.toTheRightCentered, relativeTo: box_cm, padding: 0, width: 55, height: 55)
-        
-        // Anchor the top and bottom middle boxes to the center
-        box_tm.align(.aboveCentered, relativeTo: box_cm, padding: 0, width: 55, height: 55)
-        box_bm.align(.underCentered, relativeTo: box_cm, padding: 0, width: 55, height: 55)
-        
-        // Anchor the top left and right boxes to the top center
-        box_tl.align(.toTheLeftCentered, relativeTo: box_tm, padding: 0, width: 55, height: 55)
-        box_tr.align(.toTheRightCentered, relativeTo: box_tm, padding: 0, width: 55, height: 55)
-        
-        // Anchor the bottom left and right boxes to the bottom center
-        box_bl.align(.toTheLeftCentered, relativeTo: box_bm, padding: 0, width: 55, height: 55)
-        box_br.align(.toTheRightCentered, relativeTo: box_bm, padding: 0, width: 55, height: 55)
-    }
-
     override func viewDidAppear(_ animated: Bool) {
         /*
          *  Setting up the borders to make sure
          *  everything looks nice and pretty
          *  Starting top to bottom, left to right
          */
-
+        
         box_tl.layer.borderColor = UIColor.black.cgColor
         box_tl.layer.borderWidth = 0.5
+        box_tl.titleLabel?.font = UIFont.systemFont(ofSize: 25)
         box_tm.layer.borderColor = UIColor.black.cgColor
         box_tm.layer.borderWidth = 0.5
+        box_tm.titleLabel?.font = UIFont.systemFont(ofSize: 25)
         box_tr.layer.borderColor = UIColor.black.cgColor
         box_tr.layer.borderWidth = 0.5
+        box_tr.titleLabel?.font = UIFont.systemFont(ofSize: 25)
         
         box_cl.layer.borderColor = UIColor.black.cgColor
         box_cl.layer.borderWidth = 0.5
+        box_cl.titleLabel?.font = UIFont.systemFont(ofSize: 25)
         box_cm.layer.borderColor = UIColor.black.cgColor
         box_cm.layer.borderWidth = 0.5
+        box_cm.titleLabel?.font = UIFont.systemFont(ofSize: 25)
         box_cr.layer.borderColor = UIColor.black.cgColor
         box_cr.layer.borderWidth = 0.5
+        box_cr.titleLabel?.font = UIFont.systemFont(ofSize: 25)
         
         box_bl.layer.borderColor = UIColor.black.cgColor
         box_bl.layer.borderWidth = 0.5
+        box_bl.titleLabel?.font = UIFont.systemFont(ofSize: 25)
         box_bm.layer.borderColor = UIColor.black.cgColor
         box_bm.layer.borderWidth = 0.5
+        box_bm.titleLabel?.font = UIFont.systemFont(ofSize: 25)
         box_br.layer.borderColor = UIColor.black.cgColor
         box_br.layer.borderWidth = 0.5
-
+        box_br.titleLabel?.font = UIFont.systemFont(ofSize: 25)
+        
+        // Set up reset button
+        button_reset.setTitle("Play Again!", for: .normal)
+        button_reset.setTitleColor(.blue, for: .normal)
+        button_reset.isHidden = true
+        
+        // Set up turn label
+        label_turn.textAlignment = .center
+        label_turn.text = "Player Turn: X"
+        
+        // Set up info label
+        label_info.textAlignment = .center
+    }
+    
+    override func viewWillLayoutSubviews() {
+        // Anchor _cm to the center of the screen and left and right beside
+        view.groupInCenter(group: .horizontal, views: [box_cl, box_cm, box_cr], padding: 0, width: 100, height: 100)
+        
+        // Anchor top above center
+        view.groupAndAlign(group: .horizontal, andAlign: .aboveCentered, views: [box_tl, box_tm, box_tr], relativeTo: box_cm, padding: 0, width: 100, height: 100)
+        
+        // Anchor bottom below center
+        view.groupAndAlign(group: .horizontal, andAlign: .underCentered, views: [box_bl, box_bm, box_br], relativeTo: box_cm, padding: 0, width: 100, height: 100)
+        
+        // Place turn label above boxes
+        label_turn.alignAndFillWidth(align: .aboveCentered, relativeTo: box_tm, padding: 20, height: 21)
+        
+        // Place info label below
+        label_info.alignAndFillWidth(align: .underCentered, relativeTo: box_bm, padding: 20, height: 21)
+        
+        // Place reset button below info label
+        button_reset.alignAndFillWidth(align: .underCentered, relativeTo: label_info, padding: 20, height: 21)
     }
 
     /**
-        This function is called whenever a button is pushed.
-        It determines who's turn it is, and marks the appropriate
-        button with the right letter, then updates the turn label
-        and variable
+     This function is called whenever a button is pushed.
+     It determines who's turn it is, and marks the appropriate
+     button with the right letter, then updates the turn label
+     and variable
      
-        - Parameter sender: The button that was pushed
+     - Parameter sender: The button that was pushed
      */
     @IBAction func game(sender b: UIButton) {
         if(gameOver) { return }
@@ -245,7 +231,33 @@ class ViewController: UIViewController {
     }
     
     /**
-        Resets the game board
+     Determines whether something already exists
+     in a particular location.
+     
+     - Parameter row: The row in the grid to check
+     - Parameter column: The column in the grid to check
+     
+     - Returns: Bool - True if empty, False if not
+     */
+    func checkIsFilled(row x: Int, column y: Int) -> Bool {
+        
+        return (grid[x][y] == "")
+    }
+    
+    /**
+     Fills the grid variable after a move
+     
+     - Parameter row: The row in the grid to check
+     - Parameter column: The column in the grid to check
+     
+     - Parameter played: What to fill
+     */
+    func fill(row x: Int, column y: Int, played: String) {
+        grid[x][y] = played
+    }
+    
+    /**
+     Resets the game board
      
      */
     @IBAction func resetGame() {
@@ -264,93 +276,41 @@ class ViewController: UIViewController {
         box_cl.setTitle("", for: .normal)
         box_cm.setTitle("", for: .normal)
         box_cr.setTitle("", for: .normal)
-
+        
         box_bl.setTitle("", for: .normal)
         box_bm.setTitle("", for: .normal)
         box_br.setTitle("", for: .normal)
-
+        
         // Hide the reset button (we don't need it right now)
         button_reset.isHidden = true
         
         // Clear the previous text
         label_info.text = ""
+        label_turn.text = "Player Turn: X"
     }
     
     /**
-        Helper function to be called by game() when game is over
+     Helper function to be called by game() when game is over
      
-        - Parameter info: The text to display in info_label
+     - Parameter info: The text to display in info_label
      */
     func gameOver(info: String) {
         label_info.text = info // Set the winner text
+        label_turn.text = "Game Over!"
         gameOver = true // Tell the game that it's over
         button_reset.isHidden = false // Reveal the hidden button
     }
     
     /**
-        Determines whether something already exists
-        in a particular location.
- 
-        - Parameter row: The row in the grid to check
-        - Parameter column: The column in the grid to check
+     Checks whether the game is over, and who won
      
-        - Returns: Bool - True if empty, False if not
-    */
-    func checkIsFilled(row x: Int, column y: Int) -> Bool {
-        
-        return (grid[x][y] == "")
-    }
-    
-    /**
-        Fills the grid variable after a move
+     - Parameter row: The row last played in
+     - Parameter column: The column last played in
+     - Parameter lastPlayed: The last person to play
      
-        - Parameter row: The row in the grid to check
-        - Parameter column: The column in the grid to check
-     
-        - Parameter played: What to fill
-    */
-    func fill(row x: Int, column y: Int, played: String) {
-        grid[x][y] = played
-    }
-    
-    /**
-        Checks whether the game is over, and who won
-     
-        - Parameter row: The row last played in
-        - Parameter column: The column last played in
-        - Parameter lastPlayed: The last person to play
-     
-        - Returns: Int - 0 if game continues, 1 if X wins, 2 if Y wins, 3 if draw
+     - Returns: Int - 0 if game continues, 1 if X wins, 2 if Y wins, 3 if draw
      */
     func checkVictory(row x: Int, column y: Int, lastPlayed p: String) -> Int {
-        /*
-         *  How does this section work?
-         *  First, we check a vertical win. Since we know the last played
-         *  line was row,column (passed in), we can use that to start.
-         *
-         *  For a vertical win, we take the column, and check all the other
-         *  rows matching that column. For example: if "O" was last placed in
-         *  column 2, then y = 2, and we check the other rows (0,2 1,2 and 2,2)
-         *  If they all match, we have a win
-         *
-         *  For a horizontal win, we take the row, and check all the other columns
-         *  matching that row. For example: if "O" was last placed in row 1, then
-         *  x = 1, and we check the other columns (1,0 1,1 and 1,2)
-         *  If they all match, we have a win
-         *
-         *  For diagonals, we first check to see which direction we're going. We can
-         *  do that with x == y (i.e. we're starting from either 0,0 1,1 or 2,2) or if
-         *  they equal 2 (i.e. we're starting from either 0,2 1,1 or 2,0). If true,
-         *  then we check those corresponding columns and rows, and see if we won
-         *
-         *  Finally, we check for a draw. We loop through the grid variable, and if we
-         *  come upon an empty cell (i.e. ""), then we set the flag and we're done. If
-         *  we don't, then the flag remains set to "false" and we send back 3, or "draw"
-         *
-         *  Source: https://codereview.stackexchange.com/a/24890
-         */
-        
-        
         // Check vertical win
         if (grid[0][y] == grid[1][y] && grid[1][y] == grid[2][y]) { return ((p == "X") ? 1 : 2) }
         
@@ -373,5 +333,4 @@ class ViewController: UIViewController {
         
         return ((flag) ? 0 : 3)
     }
-    
 }
