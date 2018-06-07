@@ -51,3 +51,8 @@ For a horizontal win, we take the row, and check all the other columns matching 
 For diagonals, we first check to see which direction we're going. We can do that with x == y (i.e. we're starting from either 0,0 1,1 or 2,2) or if they equal 2 (i.e. we're starting from either 0,2 1,1 or 2,0). If true, then we check those corresponding columns and rows, and see if we won
 
 Finally, we check for a draw. We loop through the grid variable, and if we come upon an empty cell (i.e. ""), then we set the flag and we're done. If we don't, then the flag remains set to "false" and we send back 3, or "draw"
+
+If there's a win, we highlight the winning boxes in green
+
+#### - highlight()
+Highlights a box by x and y

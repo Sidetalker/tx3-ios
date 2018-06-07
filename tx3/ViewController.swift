@@ -287,6 +287,9 @@ class ViewController: UIViewController {
         // Clear the previous text
         label_info.text = ""
         label_turn.text = "Player Turn: X"
+        
+        // Reset the button borders
+        viewDidAppear(false)
     }
     
     /**
@@ -312,16 +315,44 @@ class ViewController: UIViewController {
      */
     func checkVictory(row x: Int, column y: Int, lastPlayed p: String) -> Int {
         // Check vertical win
-        if (grid[0][y] == grid[1][y] && grid[1][y] == grid[2][y]) { return ((p == "X") ? 1 : 2) }
+        if (grid[0][y] == grid[1][y] && grid[1][y] == grid[2][y]) {
+            highlight(x: 0, y: y)
+            highlight(x: 1, y: y)
+            highlight(x: 2, y: y)
+            
+            return ((p == "X") ? 1 : 2)
+            
+        }
         
         // Check horizontal win
-        if (grid[x][0] == grid[x][1] && grid[x][1] == grid[x][2]) { return ((p == "X") ? 1 : 2) }
+        if (grid[x][0] == grid[x][1] && grid[x][1] == grid[x][2]) {
+            highlight(x: x, y: 0)
+            highlight(x: x, y: 1)
+            highlight(x: x, y: 2)
+
+            return ((p == "X") ? 1 : 2)
+            
+        }
         
         // Check main diagonal win (1,1 - 2,2 - 3,3)
-        if ((x == y) && (grid[0][0] == grid[1][1]) && (grid[1][1] == grid[2][2])) { return ((p == "X") ? 1 : 2) }
+        if ((x == y) && (grid[0][0] == grid[1][1]) && (grid[1][1] == grid[2][2])) {
+            highlight(x: 0, y: 0)
+            highlight(x: 1, y: 1)
+            highlight(x: 2, y: 2)
+            
+            return ((p == "X") ? 1 : 2)
+            
+        }
         
         // Check secondary diagonal win (1,3 - 2,2 - 3,1)
-        if((x + y == 2) && (grid[0][2] == grid[1][1]) && (grid[1][1] == grid[2][0])) { return ((p == "X") ? 1 : 2)}
+        if((x + y == 2) && (grid[0][2] == grid[1][1]) && (grid[1][1] == grid[2][0])) {
+            highlight(x: 0, y: 2)
+            highlight(x: 1, y: 1)
+            highlight(x: 2, y: 0)
+            
+            return ((p == "X") ? 1 : 2)
+            
+        }
         
         // Check board is full
         var flag: Bool = false
@@ -332,5 +363,12 @@ class ViewController: UIViewController {
         }
         
         return ((flag) ? 0 : 3)
+    }
+    
+    func highlight(x: Int, y: Int) {
+        let toHighlight: UIButton = view.viewWithTag(Int("\(x + 1)\(y + 1)")!) as! UIButton
+        
+        toHighlight.layer.borderColor = UIColor.green.cgColor
+        toHighlight.layer.borderWidth = 1
     }
 }
