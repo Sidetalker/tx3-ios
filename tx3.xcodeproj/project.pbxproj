@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		6643B2C220C86817002FE313 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6643B2C120C86817002FE313 /* AppDelegate.swift */; };
 		6643B2C420C86817002FE313 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6643B2C320C86817002FE313 /* ViewController.swift */; };
-		6643B2C920C86818002FE313 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6643B2C820C86818002FE313 /* Assets.xcassets */; };
 		6643B2CC20C86818002FE313 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6643B2CA20C86818002FE313 /* LaunchScreen.storyboard */; };
 		664F1DDF20C94EE600354F30 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 664F1DDE20C94EE600354F30 /* README.md */; };
+		669D66E820DDA4A4009CC6D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 669D66E720DDA4A4009CC6D2 /* Assets.xcassets */; };
 		C5CD06D08F0A35705E7931E4 /* Pods_tx3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 391D3C0B07FA8281535A7BE9 /* Pods_tx3.framework */; };
 /* End PBXBuildFile section */
 
@@ -20,10 +20,10 @@
 		6643B2BE20C86817002FE313 /* tx3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tx3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6643B2C120C86817002FE313 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6643B2C320C86817002FE313 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		6643B2C820C86818002FE313 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6643B2CB20C86818002FE313 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6643B2CD20C86818002FE313 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		664F1DDE20C94EE600354F30 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		669D66E720DDA4A4009CC6D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		674AF9C7A5873BAB2D8A7A44 /* Pods-tx3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tx3.release.xcconfig"; path = "Pods/Target Support Files/Pods-tx3/Pods-tx3.release.xcconfig"; sourceTree = "<group>"; };
 		8B2C4AE39A9F4BB586553C45 /* Pods-tx3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tx3.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tx3/Pods-tx3.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,7 +72,7 @@
 				664F1DDE20C94EE600354F30 /* README.md */,
 				6643B2C120C86817002FE313 /* AppDelegate.swift */,
 				6643B2C320C86817002FE313 /* ViewController.swift */,
-				6643B2C820C86818002FE313 /* Assets.xcassets */,
+				669D66E720DDA4A4009CC6D2 /* Assets.xcassets */,
 				6643B2CA20C86818002FE313 /* LaunchScreen.storyboard */,
 				6643B2CD20C86818002FE313 /* Info.plist */,
 			);
@@ -149,8 +149,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				664F1DDF20C94EE600354F30 /* README.md in Resources */,
+				669D66E820DDA4A4009CC6D2 /* Assets.xcassets in Resources */,
 				6643B2CC20C86818002FE313 /* LaunchScreen.storyboard in Resources */,
-				6643B2C920C86818002FE313 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
